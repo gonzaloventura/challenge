@@ -1,0 +1,19 @@
+.search{
+    width: 100%;
+    border-radius: 2px;
+    background-color: var(--background-light);
+    opacity: .80;
+    color: var(--text-dark);
+    padding: 4px 10px;
+    font-size: 14px;
+    transition: ease-in-out .3s ;
+}
+
+.search:hover{
+    transition: ease-in-out .3s ;
+    opacity: 1;
+}
+.search:focus{
+    transition: ease-in-out .3s ;
+    opacity: 1;
+}
