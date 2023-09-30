@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: 255, 255, 255;
-  --text-dark: 0, 0, 0;
+  --background-light: #fff;
+  --background-gray: #8a8888;
+  --background-light-gray: #e4e4e4;
+  --text-dark: #000;
   --text-light: #fff;
   --color-primary: #4980cc;
   --color-secondary: 255, 255, 255;
 }
 
 body {
-  color: rgb(var(--text-color));
-  background: rgb(var(--background));
+  color: var(--text-color);
+  background: var(--background-light-gray);
 }
