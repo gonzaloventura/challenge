@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Navbar() {
     return (
-        <header className="navbar">
+        <header className="navbar gap-2">
             <div className='flex gap-0 items-center'>
                 <Image
                     src={'/assets/logo35x35.png'}
@@ -19,7 +19,7 @@ export default function Navbar() {
                     alt='Unimap'
                 />
             </div>
-            <div>
+            <div className='w-[800px]'>
                 <Search />
             </div>
             <div>
