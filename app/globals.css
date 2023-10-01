@@ -9,7 +9,10 @@
   --text-dark: #000;
   --text-light: #fff;
   --color-primary: #4980cc;
-  --color-secondary: 255, 255, 255;
+  --state-stoped: #e13e5b;
+  --state-moving: #278e06;
+  --rinde-humedo: #218119;
+  --rinde-seco: #B3D838;
 }
 
 body {
