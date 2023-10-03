@@ -11,7 +11,7 @@ export default function Cosechadora({ data }) {
                     <h2 className='font-semibold text-[var(--color-primary)]'>{company}</h2>
                 </div>
             </div>
-            <div className="grid grid-cols-2 gap-2 px-10 py-4">
+            <div className="grid grid-cols-2 gap-2 px-2 md:px-10 py-4">
                 <div className="flex-col text-center place-content-center items-center align-middle py-3 bg-gray-300 text-[var(--text-dark)]">
                     <h1 className="text-sm">Tipo Cultivo</h1>
                     <h2 className="font-medium text-4xl">{indicadores.cultivo}</h2>

@@ -1,6 +1,9 @@
 'use client'
 import Cards from "@/components/Cards/Cards"
 import { useParams } from "next/navigation"
+import {FaAngleLeft} from "react-icons/fa6"
+import { useRouter } from 'next/navigation'
+
 
 const getDataFromId = (id) => {
   return fetch(`https://wrk.acronex.com/api/challenge/machines/${id}`, { cache: 'no-store' })
@@ -10,11 +13,13 @@ const getDataFromId = (id) => {
 
 export default async function IdPage() {
   const params = useParams()
+  const router = useRouter()
   const data = await getDataFromId(params.id)
   const last_update = new Date(data.last_update)
 
   return (
-    <main className="md:px-32 md:py-10 p-4">
+    <main className="md:px-32 md:py-6 p-4">
+      <button className="flex mb-4 font-semibold text-sm items-center gap-1 border border-gray-300 text-gray-500 rounded p-2 hover:border-gray-400 transition-all" onClick={() => router.back()}><FaAngleLeft /> Volver atrás</button>
       <div className="bg-white shadow rounded">
         <div className="flex justify-between font-semibold text-2xl px-10 py-6 text-gray-600">
           <h1>{data.description}</h1>
@@ -41,7 +46,7 @@ export default async function IdPage() {
                   </div>
                   <div className={`flex-col text-center place-content-center items-center align-middle py-3  ${data.data.indicadores.calidad < 0.1 && 'bg-[var(--color-indicador-1)] text-white'} ${(data.data.indicadores.calidad >= 0.1 && data.data.indicadores.calidad < 0.2) && 'bg-[var(--color-indicador-2)] text-[var(--text-dark)'} ${(data.data.indicadores.calidad >= 0.2 && data.data.indicadores.calidad < 0.35) && 'bg-[var(--color-indicador-3)] text-white'} ${(data.data.indicadores.calidad >= 0.35 && data.data.indicadores.calidad < 0.5) && 'bg-[var(--color-indicador-4)] text-white'} ${(data.data.indicadores.calidad >= 0.5) && 'bg-[var(--color-indicador-5)] text-white'}`}>
                     <h1 className="text-sm">Calidad</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.calidad != undefined ? Math.trunc(data.data.indicadores.calidad * 100) : 0}%</h2>
+                    <h2 className="font-medium text-4xl">{data.data.indicadores.calidad != undefined ? Math.trunc((1- data.data.indicadores.calidad) * 100) : 0}%</h2>
                   </div>
                 </div>
               }
