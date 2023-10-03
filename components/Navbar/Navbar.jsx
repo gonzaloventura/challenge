@@ -1,11 +1,12 @@
 import Search from '@/components/Search/Search'
 import './navbar.css'
 import Image from "next/image"
+import Link from 'next/link'
 
 export default function Navbar() {
     return (
         <header className="navbar gap-2">
-            <div className='flex gap-0 items-center'>
+            <Link href={'/'} className='flex gap-0 items-center'>
                 <Image
                     src={'/assets/logo35x35.png'}
                     width={24}
@@ -18,8 +19,8 @@ export default function Navbar() {
                     height={100}
                     alt='Unimap'
                 />
-            </div>
-            <div className='w-[800px]'>
+            </Link>
+            <div className='w-full text-center'>
                 <Search />
             </div>
             <div>
