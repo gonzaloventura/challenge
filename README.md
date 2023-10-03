@@ -16,6 +16,7 @@ Para instalar los paquetes se debe ejecutar el siguiente comando:
 npm install
 ```
 
+Cambiar el nombre del archivo "ejemplo.env.local" a ".env.local"
 
 Una vez completado el proceso, se puede iniciar el proyecto en modo desarrollo con el comando:
 ```bash
