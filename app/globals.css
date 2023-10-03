@@ -13,9 +13,28 @@
   --state-moving: #278e06;
   --rinde-humedo: #218119;
   --rinde-seco: #B3D838;
+  --color-indicador-1: #008000;
+  --color-indicador-2: #FFFF00;
+  --color-indicador-3: #FFA500;
+  --color-indicador-4: #FF0000;
+  --color-indicador-5: #8B0000;
+
 }
 
 body {
   color: var(--text-color);
   background: var(--background-light-gray);
+}
+
+.status-moving-true {
+  border-radius: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--state-moving);
+}
+.status-moving-false {
+  border-radius: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--state-stopped);
 }
