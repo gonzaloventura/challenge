@@ -1,8 +1,8 @@
 'use client'
-import Cards from "@/components/Cards/Cards"
 import { useParams } from "next/navigation"
-import {FaAngleLeft} from "react-icons/fa6"
+import { FaAngleLeft } from "react-icons/fa6"
 import { useRouter } from 'next/navigation'
+import Indicadores from "@/components/Cards/Indicadores"
 
 
 const getDataFromId = (id) => {
@@ -16,6 +16,14 @@ export default async function IdPage() {
   const router = useRouter()
   const data = await getDataFromId(params.id)
   const last_update = new Date(data.last_update)
+
+  if (data.code === 'error') {
+    return (
+      <main className="flex justify-center mt-10">
+        <h1 className="text-2xl font-semibold">{data.detail}</h1>
+      </main>
+    )
+  }
 
   return (
     <main className="md:px-32 md:py-6 p-4">
@@ -31,51 +39,17 @@ export default async function IdPage() {
             <div>
               {
                 data.class == "Pulverizadora" &&
-                <div className="grid grid-cols-2 gap-2 px-10 py-4">
-                  <div className={`flex-col text-center place-content-center items-center align-middle py-3 ${data.data.indicadores.taponamiento < 0.1 && 'bg-[var(--color-indicador-1)] text-white'} ${(data.data.indicadores.taponamiento >= 0.1 && data.data.indicadores.taponamiento < 0.2) && 'bg-[var(--color-indicador-2)] text-[var(--text-dark)'} ${(data.data.indicadores.taponamiento >= 0.2 && data.data.indicadores.taponamiento < 0.35) && 'bg-[var(--color-indicador-3)] text-white'} ${(data.data.indicadores.taponamiento >= 0.35 && data.data.indicadores.taponamiento < 0.5) && 'bg-[var(--color-indicador-4)] text-white'} ${(data.data.indicadores.taponamiento >= 0.5) && 'bg-[var(--color-indicador-5)] text-white'}`}>
-                    <h1 className="text-sm">Taponamiento</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.taponamiento != undefined ? Math.trunc(data.data.indicadores.taponamiento * 100) : 0}%</h2>
-                  </div>
-                  <div className={`flex-col text-center place-content-center items-center align-middle py-3 ${data.data.indicadores.evaporacion < 0.1 && 'bg-[var(--color-indicador-1)] text-white'} ${(data.data.indicadores.evaporacion >= 0.1 && data.data.indicadores.evaporacion < 0.2) && 'bg-[var(--color-indicador-2)] text-[var(--text-dark)'} ${(data.data.indicadores.evaporacion >= 0.2 && data.data.indicadores.evaporacion < 0.35) && 'bg-[var(--color-indicador-3)] text-white'} ${(data.data.indicadores.evaporacion >= 0.35 && data.data.indicadores.evaporacion < 0.5) && 'bg-[var(--color-indicador-4)] text-white'} ${(data.data.indicadores.evaporacion >= 0.5) && 'bg-[var(--color-indicador-5)] text-white'}`}>
-                    <h1 className="text-sm">Evaporación</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.evaporacion != undefined ? Math.trunc(data.data.indicadores.evaporacion * 100) : 0}%</h2>
-                  </div>
-                  <div className={`flex-col text-center place-content-center items-center align-middle py-3 ${data.data.indicadores.deriva < 0.1 && 'bg-[var(--color-indicador-1)] text-white'} ${(data.data.indicadores.deriva >= 0.1 && data.data.indicadores.deriva < 0.2) && 'bg-[var(--color-indicador-2)] text-[var(--text-dark)'} ${(data.data.indicadores.deriva >= 0.2 && data.data.indicadores.deriva < 0.35) && 'bg-[var(--color-indicador-3)] text-white'} ${(data.data.indicadores.deriva >= 0.35 && data.data.indicadores.deriva < 0.5) && 'bg-[var(--color-indicador-4)] text-white'} ${(data.data.indicadores.deriva >= 0.5) && 'bg-[var(--color-indicador-5)] text-white'}`}>
-                    <h1 className="text-sm whitespace-nowrap">pérdida p. viento</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.deriva != undefined ? Math.trunc(data.data.indicadores.deriva * 100) : 0}%</h2>
-                  </div>
-                  <div className={`flex-col text-center place-content-center items-center align-middle py-3  ${data.data.indicadores.calidad < 0.1 && 'bg-[var(--color-indicador-1)] text-white'} ${(data.data.indicadores.calidad >= 0.1 && data.data.indicadores.calidad < 0.2) && 'bg-[var(--color-indicador-2)] text-[var(--text-dark)'} ${(data.data.indicadores.calidad >= 0.2 && data.data.indicadores.calidad < 0.35) && 'bg-[var(--color-indicador-3)] text-white'} ${(data.data.indicadores.calidad >= 0.35 && data.data.indicadores.calidad < 0.5) && 'bg-[var(--color-indicador-4)] text-white'} ${(data.data.indicadores.calidad >= 0.5) && 'bg-[var(--color-indicador-5)] text-white'}`}>
-                    <h1 className="text-sm">Calidad</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.calidad != undefined ? Math.trunc((1- data.data.indicadores.calidad) * 100) : 0}%</h2>
-                  </div>
-                </div>
+                <Indicadores tipo={"pulverizadora"} datos={data.data} />
               }
               {
                 data.class == "Cosechadora" &&
-                <div className="grid grid-cols-2 gap-2 px-10 py-4">
-                  <div className="flex-col text-center place-content-center items-center align-middle py-3 bg-gray-300 text-[var(--text-dark)]">
-                    <h1 className="text-sm">Tipo Cultivo</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.cultivo}</h2>
-                  </div>
-                  <div className="flex-col text-center place-content-center items-center align-middle py-3 bg-gray-300 text-[var(--text-dark)]">
-                    <h1 className="text-sm">Humedad Grano</h1>
-                    <h2 className="font-medium text-4xl">{data.data.indicadores.humedad_grano != undefined ? (data.data.indicadores.humedad_grano) : 0}%</h2>
-                  </div>
-                  <div className="flex-col text-center place-content-center items-center align-middle py-3 bg-[var(--rinde-humedo)] text-white">
-                    <h1 className="text-sm whitespace-nowrap">Rinde Húmedo</h1>
-                    <h2 className="font-medium text-4xl flex flex-col">{data.data.indicadores.rinde_humedo}<span className='text-sm'>kg/ha</span></h2>
-                  </div>
-                  <div className="flex-col text-center place-content-center items-center align-middle py-3 bg-[var(--rinde-seco)] text-[var(--text-dark)]">
-                    <h1 className="text-sm">Rinde Seco</h1>
-                    <h2 className="font-medium text-4xl flex flex-col">{data.data.indicadores.rinde_seco}<span className='text-sm'>kg/ha</span></h2>
-                  </div>
-                </div>
+                <Indicadores tipo={"cosechadora"} datos={data.data} />
               }
             </div>
             <div className="flex flex-col gap-4 mt-10">
               <div>
                 <h2 className="font-semibold">Empresa</h2>
-                <p className="font-semibold text-[#4980cc]">{data.company}</p>
+                <p className="font-semibold text-[var(--color-primary)]">{data.company}</p>
               </div>
               <div>
                 <h2 className="font-semibold">Clase</h2>
@@ -96,8 +70,8 @@ export default async function IdPage() {
           </div>
           <div className="flex-auto">
             <div className="flex flex-col gap-10 m-8">
-              <div className="border solid border-gray-200 rounded-lg">
-                <h1 className="bg-gray-200 text-center font-semibold">General</h1>
+              <div className="border solid border-[var(--background-gray)] rounded-lg">
+                <h1 className="bg-[var(--background-gray)] text-center font-semibold">General</h1>
                 <div className="flex flex-row gap-4">
                   <p className="w-1/2 text-right">Cosechando</p>
                   <p className="w-1/2">{data.data.general["cosechando"] != (null || undefined) ? data.data.general["cosechando"] : "-"}</p>
@@ -116,8 +90,8 @@ export default async function IdPage() {
                 </div>
               </div>
               {data.class === "Pulverizadora" &&
-                <div className="border solid border-gray-200 rounded-lg">
-                  <h1 className="bg-gray-200 text-center font-semibold">Clima</h1>
+                <div className="border solid border-[var(--background-gray)] rounded-lg">
+                  <h1 className="bg-[var(--background-gray)] text-center font-semibold">Clima</h1>
                   <div className="flex flex-row gap-4">
                     <p className="w-1/2 text-right">Temperatura</p>
                     <p className="w-1/2">{data.data.clima["temperatura"] != (null || undefined) ? data.data.clima["temperatura"] : "-"}</p>
@@ -136,8 +110,8 @@ export default async function IdPage() {
                   </div>
                 </div>
               }
-              <div className="border solid border-gray-200 rounded-lg">
-                <h1 className="bg-gray-200 text-center font-semibold">Operación</h1>
+              <div className="border solid border-[var(--background-gray)] rounded-lg">
+                <h1 className="bg-[var(--background-gray)] text-center font-semibold">Operación</h1>
                 <div className="flex flex-row gap-4">
                   <p className="w-1/2 text-right">Velocidad</p>
                   <p className="w-1/2">{data.data["operación"]["velocidad"] != (null || undefined) ? data.data["operación"]["velocidad"] : "-"}</p>
@@ -161,4 +135,7 @@ export default async function IdPage() {
       </div>
     </main>
   )
+
+
+
 }
