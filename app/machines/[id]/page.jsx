@@ -12,7 +12,6 @@ export default async function IdPage() {
   const params = useParams()
   const data = await getDataFromId(params.id)
   const last_update = new Date(data.last_update)
-  console.log(data)
 
   return (
     <main className="md:px-32 md:py-10 p-4">
