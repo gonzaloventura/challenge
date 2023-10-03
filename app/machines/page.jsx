@@ -1,8 +1,7 @@
 import Cards from "@/components/Cards/Cards"
-import { redirect } from "next/navigation"
 
 function obtenerBusqueda(query) {
-    return fetch(`https://wrk.acronex.com/api/challenge/machines?q=${query}`, { cache: 'no-store' })
+    return fetch(`${process.env.API_URL}?q=${query}`, { cache: 'no-store' })
         .then(res => res.json())
         .catch(err => console.log(err))
 }

@@ -1,7 +1,7 @@
 import Cards from "@/components/Cards/Cards"
 
 const getAllData = () => {
-    return fetch(`https://wrk.acronex.com/api/challenge/machines/`, { cache: 'no-store' })
+    return fetch(process.env.API_URL, { cache: 'no-store' })
         .then(res => res.json())
         .catch(err => console.log(err))
 }

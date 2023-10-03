@@ -6,7 +6,7 @@ import Indicadores from "@/components/Cards/Indicadores"
 
 
 const getDataFromId = (id) => {
-  return fetch(`https://wrk.acronex.com/api/challenge/machines/${id}`, { cache: 'no-store' })
+  return fetch(`${process.env.NEXT_PUBLIC_API_URL + id}`, { cache: 'no-store' })
     .then(res => res.json())
     .catch(err => console.log(err))
 }
