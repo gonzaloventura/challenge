@@ -70,8 +70,8 @@ export default async function IdPage() {
           </div>
           <div className="flex-auto">
             <div className="flex flex-col gap-10 m-8">
-              <div className="border solid border-[var(--background-gray)] rounded-lg">
-                <h1 className="bg-[var(--background-gray)] text-center font-semibold">General</h1>
+              <div className="border solid border-[var(--background-light-gray)] rounded-lg">
+                <h1 className="bg-[var(--background-light-gray)] text-center font-semibold">General</h1>
                 <div className="flex flex-row gap-4">
                   <p className="w-1/2 text-right">Cosechando</p>
                   <p className="w-1/2">{data.data.general["cosechando"] != (null || undefined) ? data.data.general["cosechando"] : "-"}</p>
@@ -90,8 +90,8 @@ export default async function IdPage() {
                 </div>
               </div>
               {data.class === "Pulverizadora" &&
-                <div className="border solid border-[var(--background-gray)] rounded-lg">
-                  <h1 className="bg-[var(--background-gray)] text-center font-semibold">Clima</h1>
+                <div className="border solid border-[var(--background-light-gray)] rounded-lg">
+                  <h1 className="bg-[var(--background-light-gray)] text-center font-semibold">Clima</h1>
                   <div className="flex flex-row gap-4">
                     <p className="w-1/2 text-right">Temperatura</p>
                     <p className="w-1/2">{data.data.clima["temperatura"] != (null || undefined) ? data.data.clima["temperatura"] : "-"}</p>
@@ -110,8 +110,8 @@ export default async function IdPage() {
                   </div>
                 </div>
               }
-              <div className="border solid border-[var(--background-gray)] rounded-lg">
-                <h1 className="bg-[var(--background-gray)] text-center font-semibold">Operación</h1>
+              <div className="border solid border-[var(--background-light-gray)] rounded-lg">
+                <h1 className="bg-[var(--background-light-gray)] text-center font-semibold">Operación</h1>
                 <div className="flex flex-row gap-4">
                   <p className="w-1/2 text-right">Velocidad</p>
                   <p className="w-1/2">{data.data["operación"]["velocidad"] != (null || undefined) ? data.data["operación"]["velocidad"] : "-"}</p>
