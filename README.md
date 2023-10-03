@@ -1,37 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Este proyecto es una prueba técnica para la empresa Acronex
 
-## Getting Started
-
-First, run the development server:
+## Clonar
+Primero, debe clonar el repositorio en una carpeta local, para ello debe iniciar el comando:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/gonzaloventura/challenge.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ejecutar en modo desarrollo
+Para ejecutar el proyecto clonado en modo desarrollo debe instalar los paquetes del mismo dentro de la carpeta.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Para instalar los paquetes se debe ejecutar el siguiente comando:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm install
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Una vez completado el proceso, se puede iniciar el proyecto en modo desarrollo con el comando:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Luego se ejecutará por defecto en el puerto 3000, donde se puede ingresar con la siguiente URL: [http://localhost:3000](http://localhost:3000) 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Ejecutar en modo producción
+Para ejecutarlo en producción se debe compilar previamente con las siguientes líneas de código:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# challenge
+Y luego se ejecuta con el comando
+```bash
+npm start
+```
